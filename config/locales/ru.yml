@@ -6,6 +6,39 @@ ru:
       content_blocked_notice_with_record_html: Блокировано %{moderator} %{time_ago}
     email_notifier:
       by_email: email
+    emails:
+      message_notification:
+        html:
+          email_sent_reason_html: >-
+            Это письмо было отправлено вам, потому что %{user} добавил вас в приватную тему «<a href="%{post_url}">%{topic_title}</a>».
+          post_lead_html: 'Новое сообщение от %{user} в <a href="%{post_url}">«%{topic_title}»</a>:'
+          unsubscribe_instructions_html: :thredded.emails.post_notification.html.unsubscribe_instructions_html
+        subject: Новое сообщение от %{user} в «%{topic_title}»
+        text:
+          email_sent_reason: |-
+            Это письмо было отправлено вам, потому что %{user} добавил вас в
+            приватную тему «%{topic_title}».
+
+            Перейдите сюда, чтобы просмотреть разговор:
+            %{post_url}
+          post_lead: 'Новое сообщение от %{user} в «%{topic_title}»:'
+          unsubscribe_instructions: :thredded.emails.post_notification.text.unsubscribe_instructions
+      post_notification:
+        html:
+          email_sent_reason_html: 'Это письмо было отправлено вам, потому что вы подписаны на тему: «<a href="%{post_url}">%{topic_title}</a>».'
+          post_lead_html: '%{user} в <a href="%{post_url}">«%{topic_title}»</a>:'
+          unsubscribe_instructions_html: Чтобы отписаться от этих писем, обновите свои <a href="%{preferences_url}">настройки</a>.
+        subject: Новое сообщение в «%{topic_title}»
+        text:
+          email_sent_reason: |-
+            Это письмо было отправлено вам, потому что вы подписаны на тему «%{topic_title}».
+
+            Перейдите сюда, чтобы просмотреть разговор:
+            %{post_url}
+          post_lead: "%{user} указан в «%{topic_title}»:"
+          unsubscribe_instructions: |-
+            Чтобы отписаться от этих писем, обновите свои настройки здесь:
+            %{unsubscribe_url}
     errors:
       login_required: Необходимо зайти на форум.
       not_authorized: Вы не авторизованы.
@@ -21,6 +54,8 @@ ru:
       form:
         create_btn_submitting: :thredded.form.create_btn_submitting
         description_label: Описание
+        locked_label: Заблокировать
+        locked_notice: Этот форум заблокирован. Только модераторы могут создавать новые темы здесь.
         messageboard_group_id_label: Выбрать группу
         no_group: Не группировать
         title_label: Название форума
@@ -39,6 +74,8 @@ ru:
     moderation:
       approve_btn: Одобрить
       block_btn: Заблокировать
+      moderation_state:
+        name: Состояние модерации
       pending:
         empty:
           content: Все посты промодерированы.
@@ -53,6 +90,8 @@ ru:
         form_placeholder: :thredded.moderation.search_users.form_label
         no_results_message: Не найдено пользователей %{query}
         results_message: Пользователи, начинающиеся с ... %{query}
+      user:
+        name: Пользователь
     nav:
       all_messageboards: Все форумы
       edit_messageboard: Редактировать форум
@@ -114,11 +153,12 @@ ru:
       updated_notice: Ваши настройки были обновлены.
     private_posts:
       form:
-        content_label: Сообшение
+        content_label: Сообщение
         create_btn: Послать сообщение
         create_btn_submitting: Посылаю...
         update_btn_submitting: :thredded.form.update_btn_submitting
     private_topics:
+      create: :thredded.private_topics.form.create_btn
       edit: Редактировать
       errors:
         user_ids_length: Выберите хотя-бы одного пользователя.
@@ -145,6 +185,7 @@ ru:
         placeholder: Поиск тем или записей
     time_ago: "%{time} назад"
     topics:
+      create: :thredded.topics.form.create_btn
       delete_confirm: Вы уверены что хотите удалить эту тему? Это безвозвратно.
       delete_topic: Удалить тему
       deleted_notice: Тема "удалена"
@@ -169,6 +210,7 @@ ru:
         update_btn: Обновление темы
       locked:
         label: Заблокировать тему
+        message: Эта тема закрыта модератором.
       mark_as_unread: Пометить как непрочитанное
       not_following: не отслеживаю
       search:

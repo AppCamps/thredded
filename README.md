@@ -98,7 +98,7 @@ Then, see the rest of this Readme for more information about using and customizi
 Add the gem to your Gemfile:
 
 ```ruby
-gem 'thredded', '~> 0.13.0'
+gem 'thredded', '~> 0.13.8'
 ```
 
 Add the Thredded [initializer] to your parent app by running the install generator.
@@ -229,7 +229,9 @@ Include thredded JavaScripts in your `application.js`:
 
 Thredded is fully compatible with deferred and async script loading.
 
-##### Rails UJS version
+##### Alternative JavaScript dependencies
+
+<details><summary><b>Rails UJS version</b></summary>
 
 By default, thredded loads `rails-ujs`. If you're using Rails before v5.1, you need to add `rails-ujs` to
 your Gemfile.
@@ -240,8 +242,9 @@ If you'd like it to use `jquery_ujs` instead, run this command from your app dir
 mkdir -p app/assets/javascripts/thredded/dependencies/
 printf '//= require jquery3\n//= require jquery_ujs\n' > app/assets/javascripts/thredded/dependencies/ujs.js
 ```
+</details>
 
-##### Timeago version
+<details><summary><b>Timeago version</b></summary>
 
 By default, thredded loads `timeago.js`.
 
@@ -261,6 +264,7 @@ E.g. for Brazilian Portuguese with jquery.timeago:
  //= require locales/jquery.timeago.pt-br
  //= require thredded/thredded
  ```
+</details>
 
 #### Thredded page title and ID
 
@@ -376,8 +380,8 @@ change_column_default :thredded_user_preferences, :auto_follow_topics, 1
 
 ## I18n
 
-Thredded is mostly internationalized. It is currently available in English, Brazilian Portuguese, Polish, Russian,
-and Spanish.
+Thredded is mostly internationalized. It is currently available in English, Brazilian Portuguese, Chinese (Simplified),
+Polish, Russian, French, and Spanish.
 We welcome PRs adding support for new languages.
 
 Here are the steps to ensure the best support for your language if it isn't English:
@@ -387,8 +391,12 @@ Here are the steps to ensure the best support for your language if it isn't Engl
 2. Require the translations for timeago.js in your JavaScript. E.g. for Brazilian Portuguese:
 
    ```js
+   //= require thredded/dependencies/timeago
    //= require timeago/locales/pt_BR
+   //= require thredded
    ```
+
+   Note that it is important that timeago and its locales are required *before* `//= require thredded`.
 
 3. To generate URL slugs for messageboards, categories, and topics with support for more language than English,
    you can use a gem like [babosa](https://github.com/norman/babosa).
@@ -425,19 +433,11 @@ The methods used by Thredded for determining the permissions are described below
 
 #### Posting to messageboards
 
-1. A list of messageboards that a given user can post in.
+A list of messageboards that a given user can post in.
 
   ```ruby
   # @return [ActiveRecord::Relation<Thredded::Messageboard>] messageboards that the user can post in
   thredded_can_write_messageboards
-  ```
-
-2. A list of users that can post to a given list of messageboards.
-
-  ```ruby
-  # @param messageboards [Array<Thredded::Messageboard>]
-  # @return [ActiveRecord::Relation<User>] users that can post to the given messageboards
-  self.thredded_messageboards_writers(messageboards)
   ```
 
 #### Messaging other users (posting to private topics)
@@ -451,18 +451,11 @@ thredded_can_message_users
 
 #### Moderating messageboards
 
-1. A list of messageboards that a given user can moderate:
+A list of messageboards that a given user can moderate:
 
   ```ruby
   # @return [ActiveRecord::Relation<Thredded::Messageboard>] messageboards that the user can moderate
   thredded_can_moderate_messageboards
-  ```
-2. A list of users that can moderate a given list of messageboards:
-
-  ```ruby
-  # @param messageboards [Array<Thredded::Messageboard>]
-  # @return [ActiveRecord::Relation<User>] users that can moderate the given messageboards
-  self.thredded_messageboards_moderators(messageboards)
   ```
 
 #### Admin permissions
@@ -603,9 +596,20 @@ run tasks that maintain the test database.
 By default, SQLite is used in development and test. On Travis, the tests will run using SQLite, PostgreSQL, MySQL,
 and all the supported Rails versions.
 
-The test suite requires [PhantomJS](http://phantomjs.org) to be present in the path.
-To install it, run `sudo apt-get install phantomjs` on Ubuntu or Debian, or `brew install phantomjs` on Mac.
-For other operating systems, refer to the [PhantomJS documentation](http://phantomjs.org/download.html).
+The test suite requires Chromium v59+ and its WebDriver installed:
+
+On Ubuntu, run:
+
+```bash
+sudo apt-get install chromium-chromedriver
+```
+
+On Mac, run:
+
+```bash
+brew cask install chromium
+brew install chromedriver
+```
 
 ### Ruby
 

@@ -34,7 +34,7 @@ Thredded works with SQLite, MySQL (v5.6.4+), and PostgreSQL. See the demo at htt
 
   # post rendering
   s.add_dependency 'kramdown'
-  s.add_dependency 'onebox', '~> 1.8', '>= 1.8.3'
+  s.add_dependency 'onebox', '~> 1.8', '>= 1.8.13'
   s.add_dependency 'html-pipeline'
   # html-pipeline dependencies, see https://github.com/jch/html-pipeline#dependencies
   # for the AutolinkFilter
@@ -53,10 +53,10 @@ Thredded works with SQLite, MySQL (v5.6.4+), and PostgreSQL. See the demo at htt
 
   # test dependencies
   s.add_development_dependency 'capybara', '~> 2.4'
-  s.add_development_dependency 'poltergeist'
+  s.add_development_dependency 'selenium-webdriver', '>= 3.5.0'
   s.add_development_dependency 'webmock'
   s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'faker', '>= 1.6.2'
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'rspec-rails', '>= 3.5.0'
@@ -73,7 +73,7 @@ Thredded works with SQLite, MySQL (v5.6.4+), and PostgreSQL. See the demo at htt
   s.add_development_dependency 'puma'
   s.add_development_dependency 'rails_email_preview', '>= 2.0.1'
   s.add_development_dependency 'roadie-rails'
-  s.add_development_dependency 'i18n-tasks'
+  s.add_development_dependency 'i18n-tasks', '>= 0.9.18'
   s.add_development_dependency 'web-console'
 
   # add some plugins to the dummy app demo

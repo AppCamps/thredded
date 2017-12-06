@@ -37,6 +37,7 @@ require 'thredded/view_hooks/renderer'
 # Require these explicitly so that they do not need to be required if used in the initializer:
 require 'thredded/content_formatter'
 require 'thredded/email_transformer'
+require 'thredded/base_notifier'
 
 require 'thredded/collection_to_strings_with_cache_renderer'
 
@@ -96,7 +97,7 @@ module Thredded
 
   self.active_user_threshold = 5.minutes
   self.admin_column = :admin
-  self.avatar_url = ->(user) { Gravatar.src(user.email, 128, 'mm') }
+  self.avatar_url = ->(user) { Gravatar.src(user.email, 156, 'mm') }
   self.layout = 'thredded/application'
   self.moderator_column = :admin
   self.user_name_column = :name

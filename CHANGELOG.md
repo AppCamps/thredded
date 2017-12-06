@@ -1,3 +1,99 @@
+# v0.14.0 (unreleased)
+
+* Messageboard locking. By default, only moderators can create new topics in locked messageboards.
+  Posting to the existing topics is not affected.
+  [#635](https://github.com/thredded/thredded/pull/635)
+
+# v0.13.8
+
+## Fixed
+
+* Made @-mention dropdown work properly with usernames with no spaces.
+  [#645](https://github.com/thredded/thredded/pull/645)
+* Other @-mention dropdown improvements (update to latest textcomplete)
+
+See the full list of changes here: https://github.com/thredded/thredded/compare/v0.13.7...v0.13.8.
+
+# v0.13.7
+
+## Added
+
+* Simplified Chinese localization. 🇨🇳
+  [#632](https://github.com/thredded/thredded/pull/632)
+
+# v0.13.6
+
+## Fixed
+
+* Private posts can be edited again.
+
+## Added
+
+* Locked topics have a different badge color in the topics list.
+  Locked topics also display a message saying that they are locked.
+  [#629](https://github.com/thredded/thredded/pull/629)
+
+# v0.13.5
+
+## Fixed
+
+* timeago.js with locales that contain a hyphen (e.g. `zh-CN`).
+  [#626](https://github.com/thredded/thredded/issues/626)
+
+## Changed
+
+* Post notification email subject no longer contains the post's author name.
+  Notification emails for the same topic now stay in the same thread in the email client.
+  [#90c6f5ff](https://github.com/thredded/thredded/commit/90c6f5fffd42ec1001c39dceb5ab5e875a71869d)
+
+See the full list of changes here: https://github.com/thredded/thredded/compare/v0.13.4...v0.13.5.
+
+# v0.13.4
+
+## Added
+
+* CSS classes for targeting specific preference list items.
+  [#614](https://github.com/thredded/thredded/pull/614)
+
+## Fixed
+
+* Sticky topics in search results no longer break search results.
+  [#611](https://github.com/thredded/thredded/issues/611)
+* If a user was subscribed to a topic via more than one notifier,
+  they would only be notified via one of them.
+  [#540](https://github.com/thredded/thredded/issues/540)
+
+# v0.13.3
+
+## Added
+
+* French localization :fr:.
+  [#605](https://github.com/thredded/thredded/pull/605)
+* Email templates now use i18n throughout. The copy has been improved.
+  [#607](https://github.com/thredded/thredded/pull/607)
+
+## Changed
+
+* Avatars are now larger on large screens.
+  [#565](https://github.com/thredded/thredded/issues/565)
+
+# v0.13.2
+
+This release updates the bundled JavaScript dependencies, [autosize] and [textcomplete], to their latest versions.
+
+See the full list of changes here: https://github.com/thredded/thredded/compare/v0.13.1...v0.13.2.
+
+# v0.13.1
+
+This is a minor bugfix release.
+
+## Fixed
+
+* Maps onebox display for onebox v1.8.4+ and bumps the minimum required onebox version to v1.8.13.
+  [#198dbeeb](https://github.com/thredded/thredded/commit/198dbeebf32c509db0afb65c33293394581defd9)
+* Autoloading conflicts when the parent app defines constants with the same name as Thredded constants.
+  [#e2ebb1e4](https://github.com/thredded/thredded/commit/e2ebb1e418894c65f8b884821e2d7be085af3715)
+
 # v0.13.0
 
 This release removes jQuery dependency from Thredded JavaScripts, reducing the size of the Thredded JavaScript bundle
